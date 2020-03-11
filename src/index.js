@@ -41,24 +41,25 @@ const space = "**********";
 
 function decode(expr) {
   let result = "";
-  let sustring = "";
-  let letter = "";
+  let substring = "";
+  let letter;
   for (let i=0; i < expr.length; i+=10) {
+    letter = "";
     substring = expr.slice(i, i+10).trim("0");
     if (substring == space) {
       result+=" ";
       continue;
     };
-    for (let j=0; j<substring.length; j+2) {
+    for (let j=0; j<10; j+=2) {
       let part = substring.slice(j, j+2);
       if (part == "10") {
-        letter += "."; 
+        letter+=".";
       }
       else if (part == "11") {
-        letter += "-";
+        letter+="-";
       };
     };
-    result+= MORSE_TABLE[latter];
+  result+=MORSE_TABLE[letter];
   };
   return result;
 };
